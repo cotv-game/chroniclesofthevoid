@@ -4,8 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chronicles of the Void</title>
-
   <meta name="description" content="Dark sci‑fi card game teaser. When the silence of space spoke, it wasn't an answer." />
+
+  <!-- Open Graph / Social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chronicles of the Void">
+<meta property="og:description" content="A dark sci‑fi collectible card game. When the silence of space spoke, it wasn’t an answer.">
+<meta property="og:image" content="https://chroniclesofthevoid.net/og_image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://chroniclesofthevoid.net/">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chronicles of the Void">
+<meta name="twitter:description" content="A dark sci‑fi collectible card game.">
+<meta name="twitter:image" content="https://chroniclesofthevoid.net/og_image.png">
 
   <!-- Google font (sci‑fi, clean, readable) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,20 +33,60 @@
     body{
       margin:0;
       font-family:Inter, system-ui, sans-serif;
-      background:
-        radial-gradient(900px 500px at 70% 15%, rgba(128,92,255,.15), transparent 60%),
-        radial-gradient(800px 600px at 20% 70%, rgba(70,243,255,.10), transparent 55%),
-        linear-gradient(180deg,#05060a,#070917);
       color:#e8ebff;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
+      overflow:hidden; /* prevents scrollbars while parallax moves */
+      background:#05060a;
+    }
+
+    /* ===== Background layer (parallax) ===== */
+    .bg{
+      position:fixed;
+      inset:-50px; /* overscan so edges never show while moving */
+      background-image:url("background_landing.png");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+
+      transform:translate3d(0,0,0) scale(1.08);
+      will-change:transform;
+      z-index:-2;
+
+      /* darker, more "space black" and less saturated */
+      filter:saturate(0.92) contrast(1.13) brightness(0.70);
+    }
+
+    /* overlay haze + gradients for readability + vibe */
+    .bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 520px at 70% 15%, rgba(128,92,255,.12), transparent 60%),
+        radial-gradient(800px 640px at 20% 70%, rgba(70,243,255,.07), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));
+      pointer-events:none;
+    }
+
+    /* subtle grain (optional but helps remove "sterile" feel) */
+    .grain{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      opacity:.12;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
     }
 
     .container{
       max-width:720px;
       padding:28px;
+      position:relative;
+      z-index:1;
     }
 
     h1{
@@ -41,6 +95,7 @@
       letter-spacing:.08em;
       margin:0 0 12px;
       text-transform:uppercase;
+      text-shadow: 0 12px 40px rgba(0,0,0,.55);
     }
 
     .subtitle{
@@ -48,12 +103,14 @@
       color:#b9c0ff;
       line-height:1.6;
       margin-bottom:26px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
     }
 
     .quote{
       font-size:18px;
       margin-bottom:30px;
       line-height:1.55;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
     }
 
     .icons{
@@ -74,6 +131,7 @@
       border:1px solid rgba(180,190,255,.18);
       transition:.2s ease;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
     }
 
     .icon:hover{
@@ -82,7 +140,7 @@
       border-color: rgba(180,190,255,.32);
     }
 
-    /* ✅ FIX: make dark SVG icons visible on dark background */
+    /* make dark SVG icons visible on dark background */
     .icon img{
       width:26px;
       height:26px;
@@ -98,16 +156,18 @@
       gap:6px;
       font-family:Orbitron, sans-serif;
       font-size:12px;
+      z-index:2;
     }
 
     .lang button{
-      background:none;
+      background:rgba(0,0,0,.22);
       border:1px solid rgba(180,190,255,.25);
       color:#cfd5ff;
       padding:6px 10px;
       border-radius:10px;
       cursor:pointer;
       transition:.18s ease;
+      backdrop-filter: blur(6px);
     }
 
     .lang button:hover{
@@ -129,6 +189,7 @@
       opacity:.95;
       margin-top:8px;
       margin-bottom:6px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
     }
 
     footer{
@@ -139,16 +200,25 @@
       font-size:12px;
       color:#8a90c6;
       text-align:center;
-      padding: 0 16px;
+      padding:0 16px;
+      z-index:2;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
     }
 
-    footer .legal{
-      opacity:.9;
+    footer .legal{ opacity:.9; }
+
+    /* respects accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .bg{ transform:translate3d(0,0,0) scale(1.04) !important; }
+      .icon:hover{ transform:none; }
     }
   </style>
 </head>
 
 <body>
+  <!-- Background -->
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <!-- Language toggle -->
   <div class="lang">
@@ -174,6 +244,7 @@
       <a class="icon" href="https://discord.gg/xnb9TVC3g" target="_blank" rel="noopener" aria-label="Discord">
         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg" alt="">
       </a>
+
       <!-- Instagram -->
       <a class="icon" href="https://www.instagram.com/cotv.game" target="_blank" rel="noopener" aria-label="Instagram">
         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="">
@@ -190,6 +261,7 @@
   </footer>
 
   <script>
+    // ===== i18n =====
     const TEXT = {
       en:{
         title:"CHRONICLES<br>OF THE VOID",
@@ -218,14 +290,84 @@
       localStorage.setItem("cotv_lang", lang);
     }
 
-    btnEN.onclick=()=>setLang("en");
-    btnCZ.onclick=()=>setLang("cz");
+    btnEN.onclick = ()=>setLang("en");
+    btnCZ.onclick = ()=>setLang("cz");
 
-    // default ENG
+    // ✅ fixed default language fallback (was broken before)
     const saved = localStorage.getItem("cotv_lang") || "en";
     setLang(saved);
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ===== Parallax background =====
+    const bg = document.querySelector(".bg");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // subtle movement strength (px)
+    const strengthDesktop = 16;
+    const strengthMobile  = 14;
+
+    if (!reduceMotion && bg) {
+      let targetX = 0, targetY = 0;
+      let currentX = 0, currentY = 0;
+
+      // Desktop: mouse
+      function onMouseMove(e){
+        const x = (e.clientX / window.innerWidth) * 2 - 1;  // -1..1
+        const y = (e.clientY / window.innerHeight) * 2 - 1; // -1..1
+        targetX = -x * strengthDesktop;
+        targetY = -y * strengthDesktop;
+      }
+      window.addEventListener("mousemove", onMouseMove, { passive:true });
+
+      // Mobile: device tilt (optional)
+      async function enableTilt(){
+        try{
+          // iOS requires permission on user gesture
+          if (typeof DeviceOrientationEvent !== "undefined" &&
+              typeof DeviceOrientationEvent.requestPermission === "function") {
+
+            // Ask once, on first user click/tap anywhere
+            const ask = async () => {
+              try{
+                const res = await DeviceOrientationEvent.requestPermission();
+                if (res === "granted") {
+                  window.addEventListener("deviceorientation", onTilt, { passive:true });
+                }
+              } catch(_){}
+              window.removeEventListener("click", ask);
+              window.removeEventListener("touchstart", ask);
+            };
+            window.addEventListener("click", ask, { once:true });
+            window.addEventListener("touchstart", ask, { once:true });
+
+          } else if (typeof DeviceOrientationEvent !== "undefined") {
+            // Android/others: usually no permission prompt
+            window.addEventListener("deviceorientation", onTilt, { passive:true });
+          }
+        }catch(_){}
+      }
+
+      function onTilt(e){
+        // gamma: left/right (-90..90), beta: front/back (-180..180)
+        const g = Math.max(-25, Math.min(25, e.gamma || 0)) / 25; // -1..1
+        const b = Math.max(-25, Math.min(25, e.beta  || 0)) / 25; // -1..1
+        targetX = -g * strengthMobile;
+        targetY = -b * strengthMobile;
+      }
+
+      enableTilt();
+
+      function animate(){
+        // smooth follow (lerp)
+        currentX += (targetX - currentX) * 0.06;
+        currentY += (targetY - currentY) * 0.06;
+
+        bg.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) scale(1.08)`;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
   </script>
 </body>
 </html>
