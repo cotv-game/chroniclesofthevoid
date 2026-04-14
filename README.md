@@ -1,2 +1,5 @@
-# chroniclesofthevoid
-Chronicles of the Void - project in development
+# Chronicles of the Void
+
+Dark sci-fi CCG game - project in development
+
+This repository hosts the project landing pag
