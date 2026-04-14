@@ -1,12 +1,231 @@
-
-<!DOCTYPE html>
-<html lang="cs">
+<!doctype html>
+<html lang="en" data-lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chronicles of the Void</title>
+
+  <meta name="description" content="Dark sci‑fi card game teaser. When the silence of space spoke, it wasn't an answer." />
+
+  <!-- Google font (sci‑fi, clean, readable) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family:Inter, system-ui, sans-serif;
+      background:
+        radial-gradient(900px 500px at 70% 15%, rgba(128,92,255,.15), transparent 60%),
+        radial-gradient(800px 600px at 20% 70%, rgba(70,243,255,.10), transparent 55%),
+        linear-gradient(180deg,#05060a,#070917);
+      color:#e8ebff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .container{
+      max-width:720px;
+      padding:28px;
+    }
+
+    h1{
+      font-family:Orbitron, sans-serif;
+      font-size:clamp(36px,5vw,60px);
+      letter-spacing:.08em;
+      margin:0 0 12px;
+      text-transform:uppercase;
+    }
+
+    .subtitle{
+      font-size:16px;
+      color:#b9c0ff;
+      line-height:1.6;
+      margin-bottom:26px;
+    }
+
+    .quote{
+      font-size:18px;
+      margin-bottom:30px;
+      line-height:1.55;
+    }
+
+    .icons{
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      margin-bottom:22px;
+    }
+
+    .icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(180,190,255,.18);
+      transition:.2s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .icon:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-2px);
+      border-color: rgba(180,190,255,.32);
+    }
+
+    /* ✅ FIX: make dark SVG icons visible on dark background */
+    .icon img{
+      width:26px;
+      height:26px;
+      opacity:.92;
+      filter: invert(1) brightness(1.05) contrast(1.05);
+    }
+
+    .lang{
+      position:fixed;
+      top:18px;
+      right:18px;
+      display:flex;
+      gap:6px;
+      font-family:Orbitron, sans-serif;
+      font-size:12px;
+    }
+
+    .lang button{
+      background:none;
+      border:1px solid rgba(180,190,255,.25);
+      color:#cfd5ff;
+      padding:6px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .lang button:hover{
+      background:rgba(180,190,255,.08);
+    }
+
+    .lang button.active{
+      background:rgba(180,190,255,.15);
+      color:#fff;
+      border-color: rgba(180,190,255,.35);
+    }
+
+    .bottomline{
+      font-size:13px;
+      color:#9aa2da;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-family:Orbitron, sans-serif;
+      opacity:.95;
+      margin-top:8px;
+      margin-bottom:6px;
+    }
+
+    footer{
+      position:fixed;
+      bottom:14px;
+      left:0;
+      width:100%;
+      font-size:12px;
+      color:#8a90c6;
+      text-align:center;
+      padding: 0 16px;
+    }
+
+    footer .legal{
+      opacity:.9;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Chronicles of the Void</h1>
-  <p>Dark Sci-Fi CCG Game - Project in Development.</p>
+
+  <!-- Language toggle -->
+  <div class="lang">
+    <button id="btnEN" class="active" type="button">EN</button>
+    <button id="btnCZ" type="button">CZ</button>
+  </div>
+
+  <div class="container">
+    <h1 data-i18n="title">CHRONICLES<br>OF THE VOID</h1>
+
+    <div class="subtitle" data-i18n="subtitle">
+      A dark sci‑fi collectible card game.
+    </div>
+
+    <div class="quote" data-i18n="quote">
+      When the silence of space finally spoke,<br>
+      it wasn’t an answer.<br><br>
+      <strong>It was an invoice.</strong>
+    </div>
+
+    <div class="icons">
+      <!-- Discord -->
+      <a class="icon" href="https://discord.gg/xnb9TVC3g" target="_blank" rel="noopener" aria-label="Discord">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg" alt="">
+      </a>
+      <!-- Instagram -->
+      <a class="icon" href="https://www.instagram.com/cotv.game" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="">
+      </a>
+    </div>
+
+    <div class="bottomline" data-i18n="bottomline">In development — to be continued…</div>
+  </div>
+
+  <footer>
+    <div class="legal">
+      © <span id="year"></span> Chronicles of the Void — All rights reserved
+    </div>
+  </footer>
+
+  <script>
+    const TEXT = {
+      en:{
+        title:"CHRONICLES<br>OF THE VOID",
+        subtitle:"A dark sci‑fi collectible card game.",
+        quote:"When the silence of space finally spoke,<br>it wasn’t an answer.<br><br><strong>It was an invoice.</strong>",
+        bottomline:"In development — to be continued…"
+      },
+      cz:{
+        title:"KRONIKY<br>PRÁZDNOTY",
+        subtitle:"Temná sci‑fi sběratelská karetní hra.",
+        quote:"Když se ticho vesmíru konečně ozvalo,<br>nebyla to odpověď.<br><br><strong>Byla to účtenka.</strong>",
+        bottomline:"Ve vývoji — pokračování příště…"
+      }
+    };
+
+    const btnEN = document.getElementById("btnEN");
+    const btnCZ = document.getElementById("btnCZ");
+
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        el.innerHTML = TEXT[lang][el.dataset.i18n];
+      });
+      btnEN.classList.toggle("active", lang==="en");
+      btnCZ.classList.toggle("active", lang==="cz");
+      localStorage.setItem("cotv_lang", lang);
+    }
+
+    btnEN.onclick=()=>setLang("en");
+    btnCZ.onclick=()=>setLang("cz");
+
+    // default ENG
+    const saved = localStorage.getItem("cotv_lang") || "en";
+    setLang(saved);
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
