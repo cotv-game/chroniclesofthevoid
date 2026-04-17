@@ -664,128 +664,26 @@ text-shadow:
 
 
 
-.btn-game{
-  background:#1f2a1f !important;
-  border:1px solid #3ecf6d !important;
-  color:#eafff0 !important;
-  font-weight:bold;
-}
+.btn-game{ background:#1f2a1f !important; border:1px solid #3ecf6d !important; color:#eafff0 !important; font-weight:bold; }
 
 /* --- GAME VIEW (simple board) --- */
-#game-view{
-  width:100%;
-  max-width:1200px;
-  margin:10px auto 40px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.game-panel{
-  background:rgba(10,10,10,0.75);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:14px;
-  padding:12px;
-  box-shadow:0 12px 32px rgba(0,0,0,0.65);
-}
-.player-panel{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.player-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:var(--accent-gold);
-}
-.player-stats{
-  font-weight:600;
-  text-transform:none;
-  letter-spacing:0;
-  color:#bdbdbd;
-  font-size:0.85rem;
-}
-.game-controls{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.game-controls button{
-  padding:8px 10px;
-  font-size:0.72rem;
-}
-.zone-row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.zone{
-  flex:1 1 250px;
-  min-width:240px;
-  background:rgba(0,0,0,0.35);
-  border:1px solid rgba(255,255,255,0.10);
-  border-radius:12px;
-  padding:10px;
-}
-.zone-title{
-  font-weight:800;
-  color:#ddd;
-  margin-bottom:8px;
-  font-size:0.8rem;
-  letter-spacing:0.8px;
-  text-transform:uppercase;
-}
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.chip{
-  border:1px solid rgba(255,255,255,0.16);
-  background:rgba(20,20,20,0.75);
-  color:#ddd;
-  padding:6px 8px;
-  border-radius:999px;
-  font-size:0.74rem;
-}
-.action-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.action-btn{
-  border:1px solid rgba(197,160,89,0.35);
-  background:rgba(0,0,0,0.45);
-  color:#e7e1d1;
-  padding:6px 8px;
-  border-radius:10px;
-  font-size:0.72rem;
-  cursor:pointer;
-}
+#game-view{ width:100%; max-width:1200px; margin:10px auto 40px; display:flex; flex-direction:column; gap:14px; }
+.game-panel{ background:rgba(10,10,10,0.75); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:12px; box-shadow:0 12px 32px rgba(0,0,0,0.65); }
+.player-panel{ display:flex; flex-direction:column; gap:10px; }
+.player-header{ display:flex; align-items:center; justify-content:space-between; gap:10px; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:var(--accent-gold); }
+.player-stats{ font-weight:600; text-transform:none; letter-spacing:0; color:#bdbdbd; font-size:0.85rem; }
+.game-controls{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.game-controls button{ padding:8px 10px; font-size:0.72rem; }
+.zone-row{ display:flex; gap:10px; flex-wrap:wrap; }
+.zone{ flex:1 1 250px; min-width:240px; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.10); border-radius:12px; padding:10px; }
+.zone-title{ font-weight:800; color:#ddd; margin-bottom:8px; font-size:0.8rem; letter-spacing:0.8px; text-transform:uppercase; }
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{ border:1px solid rgba(255,255,255,0.16); background:rgba(20,20,20,0.75); color:#ddd; padding:6px 8px; border-radius:999px; font-size:0.74rem; }
+.action-list{ display:flex; flex-wrap:wrap; gap:8px; }
+.action-btn{ border:1px solid rgba(197,160,89,0.35); background:rgba(0,0,0,0.45); color:#e7e1d1; padding:6px 8px; border-radius:10px; font-size:0.72rem; cursor:pointer; }
 .action-btn:hover{ border-color: rgba(197,160,89,0.9); }
-
-#game-log{
-  max-height:260px;
-  overflow:auto;
-  background:rgba(0,0,0,0.5);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:12px;
-  padding:10px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size:0.75rem;
-  line-height:1.25;
-  color:#cfcfcf;
-  white-space:pre-wrap;
-}
-#game-status{
-  color:#9aa;
-  font-size:0.8rem;
-  margin-bottom:8px;
-}
+#game-log{ max-height:260px; overflow:auto; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:0.75rem; line-height:1.25; color:#cfcfcf; white-space:pre-wrap; }
+#game-status{ color:#9aa; font-size:0.8rem; margin-bottom:8px; }
 
 </style>
 </head>
@@ -808,6 +706,7 @@ text-shadow:
 
 
     <div class="card-container" id="gallery"></div>
+
 <div class="ep-row">
     <button id="ep-init">Init test</button>
     <button id="ep-actions">Legal actions</button>
@@ -1204,7 +1103,6 @@ Fanatický řád víry a inkvizice. Spalují Prázdnotu světlem, i za cenu nič
 
 function showGame() {
   const gallery = document.getElementById('gallery');
-  // aktivní tlačítko
   document.querySelectorAll('#menu button').forEach(btn => btn.classList.remove('active'));
   const gameBtn = document.querySelector('#menu .btn-game');
   if (gameBtn) gameBtn.classList.add('active');
@@ -1217,7 +1115,8 @@ function showGame() {
           <div class="player-stats" id="stats-b">(není init)</div>
         </div>
         <div class="game-controls">
-          <button id="gb-init">Init game</button>
+          <span class="player-stats" id="bo-b">BO: -</span>
+          <span class="player-stats" id="bv-b">BV: -</span>
           <button id="gb-status">Status</button>
           <button id="gb-pass">PASS</button>
           <button id="gb-pass2">PASS×2</button>
@@ -1251,6 +1150,14 @@ function showGame() {
           <div class="player-stats" id="stats-a">(není init)</div>
         </div>
         <div class="game-controls">
+          <button id="ga-init">Init game</button>
+          <span class="player-stats" id="bo-a">BO: 5</span>
+          <span class="player-stats" id="bv-a">BV: 0</span>
+          <button id="ga-meditate">Meditovat (+1 BO)</button>
+          <button id="ga-play1">Vyložit 1. kartu</button>
+          <button id="ga-status">Status</button>
+          <button id="ga-pass">PASS</button>
+          <button id="ga-pass2">PASS×2</button>
           <button id="ga-legal-a">Legal A</button>
         </div>
         <div class="zone-row">
@@ -1265,9 +1172,6 @@ function showGame() {
 
   if (window.gameUI && typeof window.gameUI.mount === 'function') {
     window.gameUI.mount();
-  } else {
-    const log = document.getElementById('game-log');
-    if (log) log.textContent = 'GAME UI není připravené. Zkontroluj, že rulesEngine.js se načetl.';
   }
 }
 
@@ -1464,10 +1368,22 @@ window.cards = cards;
     // Test balíky (malé, ale stačí na ověření mechanik):
     // A: Trhač(4), Stínohra(9), Mlha(66)
     // B: Bismarck(22), Dračí střela(67)
-    const deckA = [inst('4'), inst('9'), inst('66')];
-    const deckB = [inst('22'), inst('67')];
+    // Auto decks: rozdělíme karty z window.cards mezi hráče a zajistíme alespoň 60 karet
+ const ids = (window.cards || []).map(c => String(c.id));
+ const rep = (arr, n) => {
+   const out = [];
+   while (out.length < n && arr.length) {
+     for (const x of arr) { out.push(x); if (out.length >= n) break; }
+   }
+   return out;
+ };
+ const aIds = rep(ids.slice(0, 40), 60);
+ const bIds = rep(ids.slice(40, 80), 60);
+ const deckA = aIds.map(id => inst(id));
+ const deckB = bIds.map(id => inst(id));
 
-    state = createInitialState({ deckA, deckB, startingBO: 20, targetBV: 20, cardDB });
+
+    state = createInitialState({ deckA, deckB, startingBO: 5, targetBV: 20, cardDB });
 
     // Vystav do konzole
     window.engineTest = {
