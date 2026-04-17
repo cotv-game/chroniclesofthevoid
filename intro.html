@@ -662,62 +662,130 @@ text-shadow:
         .apex .faction-logo { color: var(--apex-color); }
     
 
-/* --- ENGINE TEST PANEL (debug) --- */
-#engine-panel{
-  position:fixed;
-  left:16px;
-  bottom:16px;
-  width:360px;
-  max-width:calc(100vw - 32px);
-  background:rgba(0,0,0,0.78);
-  border:1px solid rgba(197,160,89,0.55);
-  box-shadow:0 12px 32px rgba(0,0,0,0.85);
-  border-radius:12px;
-  padding:12px;
-  z-index:9999;
-  backdrop-filter: blur(6px);
+
+
+.btn-game{
+  background:#1f2a1f !important;
+  border:1px solid #3ecf6d !important;
+  color:#eafff0 !important;
+  font-weight:bold;
 }
-#engine-panel .ep-title{
+
+/* --- GAME VIEW (simple board) --- */
+#game-view{
+  width:100%;
+  max-width:1200px;
+  margin:10px auto 40px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.game-panel{
+  background:rgba(10,10,10,0.75);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px;
+  padding:12px;
+  box-shadow:0 12px 32px rgba(0,0,0,0.65);
+}
+.player-panel{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.player-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:1px;
   text-transform:uppercase;
   color:var(--accent-gold);
-  margin-bottom:8px;
+}
+.player-stats{
+  font-weight:600;
+  text-transform:none;
+  letter-spacing:0;
+  color:#bdbdbd;
   font-size:0.85rem;
 }
-#engine-panel .ep-row{
+.game-controls{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-bottom:8px;
 }
-#engine-panel button{
+.game-controls button{
   padding:8px 10px;
   font-size:0.72rem;
 }
-#engine-panel .ep-log{
-  margin-top:8px;
-  padding:8px;
-  background:rgba(10,10,10,0.65);
-  border:1px solid rgba(255,255,255,0.12);
+.zone-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.zone{
+  flex:1 1 250px;
+  min-width:240px;
+  background:rgba(0,0,0,0.35);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:12px;
+  padding:10px;
+}
+.zone-title{
+  font-weight:800;
+  color:#ddd;
+  margin-bottom:8px;
+  font-size:0.8rem;
+  letter-spacing:0.8px;
+  text-transform:uppercase;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.chip{
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(20,20,20,0.75);
+  color:#ddd;
+  padding:6px 8px;
+  border-radius:999px;
+  font-size:0.74rem;
+}
+.action-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.action-btn{
+  border:1px solid rgba(197,160,89,0.35);
+  background:rgba(0,0,0,0.45);
+  color:#e7e1d1;
+  padding:6px 8px;
   border-radius:10px;
-  color:#cfcfcf;
-  max-height:180px;
-  overflow:auto;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size:0.72rem;
+  cursor:pointer;
+}
+.action-btn:hover{ border-color: rgba(197,160,89,0.9); }
+
+#game-log{
+  max-height:260px;
+  overflow:auto;
+  background:rgba(0,0,0,0.5);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;
+  padding:10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size:0.75rem;
   line-height:1.25;
+  color:#cfcfcf;
   white-space:pre-wrap;
 }
-#engine-panel .ep-hint{
+#game-status{
   color:#9aa;
-  font-size:0.72rem;
-  margin-top:6px;
+  font-size:0.8rem;
+  margin-bottom:8px;
 }
-
-
-
-body.game-mode #engine-panel{ display:none !important; }
 
 </style>
 </head>
@@ -727,7 +795,8 @@ body.game-mode #engine-panel{ display:none !important; }
 
 <div class="controls" id="menu">
     <button class="btn-story" onclick="showLore()">Příběh</button> 
-    <button class="btn-rules" onclick="showRules()">Pravidla</button> 
+    <button class="btn-rules" onclick="showRules()">Pravidla</button>
+ <button class="btn-game" onclick="showGame()">Game</button> 
     <button class="active" onclick="filterCards('all', this)">Všechny</button>
     <button onclick="filterCards('void', this)">Vnější prázdnota</button>
     <button onclick="filterCards('light', this)">Světlonoši</button>
@@ -739,11 +808,7 @@ body.game-mode #engine-panel{ display:none !important; }
 
 
     <div class="card-container" id="gallery"></div>
-
-<!-- ENGINE TEST PANEL (slouží pro rychlé ověření rulesEngine.js nad tvým cards[] bez úprav databáze) -->
-<div id="engine-panel">
-  <div class="ep-title">ENGINE TEST</div>
-  <div class="ep-row">
+<div class="ep-row">
     <button id="ep-init">Init test</button>
     <button id="ep-actions">Legal actions</button>
     <button id="ep-play-mist">Play Mlha</button>
@@ -1135,6 +1200,76 @@ Fanatický řád víry a inkvizice. Spalují Prázdnotu světlem, i za cenu nič
     `;
 }
 
+
+
+function showGame() {
+  const gallery = document.getElementById('gallery');
+  // aktivní tlačítko
+  document.querySelectorAll('#menu button').forEach(btn => btn.classList.remove('active'));
+  const gameBtn = document.querySelector('#menu .btn-game');
+  if (gameBtn) gameBtn.classList.add('active');
+
+  gallery.innerHTML = `
+    <div id="game-view">
+      <div class="game-panel player-panel" id="panel-b">
+        <div class="player-header">
+          <div>Hráč B</div>
+          <div class="player-stats" id="stats-b">(není init)</div>
+        </div>
+        <div class="game-controls">
+          <button id="gb-init">Init game</button>
+          <button id="gb-status">Status</button>
+          <button id="gb-pass">PASS</button>
+          <button id="gb-pass2">PASS×2</button>
+          <button id="gb-legal-b">Legal B</button>
+        </div>
+        <div class="zone-row">
+          <div class="zone"><div class="zone-title">Ruka</div><div class="chips" id="hand-b"></div></div>
+          <div class="zone"><div class="zone-title">Družstvo</div><div class="chips" id="board-b"></div></div>
+          <div class="zone"><div class="zone-title">Prázdnota</div><div class="chips" id="void-b"></div></div>
+        </div>
+        <div class="zone"><div class="zone-title">Akce (klikni pro provedení)</div><div class="action-list" id="actions-b"></div></div>
+      </div>
+
+      <div class="game-panel" id="panel-log">
+        <div class="player-header" style="margin-bottom:6px;">
+          <div>LOG</div>
+          <div class="player-stats" id="game-turn">(Turn)</div>
+        </div>
+        <div id="game-status"></div>
+        <div class="game-controls">
+          <button id="g-clear">Clear log</button>
+          <button id="g-end">End turn (active)</button>
+          <button id="g-legal-active">Legal (active)</button>
+        </div>
+        <pre id="game-log"></pre>
+      </div>
+
+      <div class="game-panel player-panel" id="panel-a">
+        <div class="player-header">
+          <div>Hráč A</div>
+          <div class="player-stats" id="stats-a">(není init)</div>
+        </div>
+        <div class="game-controls">
+          <button id="ga-legal-a">Legal A</button>
+        </div>
+        <div class="zone-row">
+          <div class="zone"><div class="zone-title">Ruka</div><div class="chips" id="hand-a"></div></div>
+          <div class="zone"><div class="zone-title">Družstvo</div><div class="chips" id="board-a"></div></div>
+          <div class="zone"><div class="zone-title">Prázdnota</div><div class="chips" id="void-a"></div></div>
+        </div>
+        <div class="zone"><div class="zone-title">Akce (klikni pro provedení)</div><div class="action-list" id="actions-a"></div></div>
+      </div>
+    </div>
+  `;
+
+  if (window.gameUI && typeof window.gameUI.mount === 'function') {
+    window.gameUI.mount();
+  } else {
+    const log = document.getElementById('game-log');
+    if (log) log.textContent = 'GAME UI není připravené. Zkontroluj, že rulesEngine.js se načetl.';
+  }
+}
 
 function displayCards(filteredArray) {
   const container = document.getElementById('gallery');
