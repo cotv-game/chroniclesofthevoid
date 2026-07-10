@@ -1,245 +1,248 @@
-<!doctype html>
-<html lang="en" data-lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chronicles of the Void</title>
-  <meta name="description" content="Dark sci‑fi card game teaser. When the silence of space spoke, it wasn't an answer." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronicles of the Void</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Open Graph / Social preview -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chronicles of the Void">
-<meta property="og:description" content="A dark sci‑fi collectible card game. When the silence of space spoke, it wasn’t an answer.">
-<meta property="og:image" content="https://chroniclesofthevoid.net/og_image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://chroniclesofthevoid.net/">
+fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+    min-height:100%;
+    background:#000;
+    font-family:Segoe UI,Arial,sans-serif;
+    overflow-x:hidden;
+}
+.hero{position:relative;height:100vh}
 
-<!-- X / Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Chronicles of the Void">
-<meta name="twitter:description" content="A dark sci‑fi collectible card game.">
-<meta name="twitter:image" content="https://chroniclesofthevoid.net/og_image.png">
+.footer{
+    width:100%;
+    text-align:center;
+    padding:30px 20px;
+    color:#fcfcfc;
+    font-size:12px;
+    letter-spacing:.05em;
+    background:#050505;
+}
 
-  <!-- Google font (sci‑fi, clean, readable) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+.obr{
+    width:500px;
+    max-width:100%;
+    height:auto;
+    display:block;
+    margin:50px auto;
+    display:flex;
+    justify-content:center;
+    
+}
 
-  <style>
-    *{box-sizing:border-box}
-    html,body{height:100%}
+.social-panel{
+    position:absolute;
+    top:50px;
+    right:70px;
+    display:flex;
+    gap:20px;
+    z-index:100;
+}
 
-    body{
-      margin:0;
-      font-family:Inter, system-ui, sans-serif;
-      color:#e8ebff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      overflow:hidden; /* prevents scrollbars while parallax moves */
-      background:#05060a;
-    }
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(8px);
+    transition:.25s;
+}
 
-    /* ===== Background layer (parallax) ===== */
-    .bg{
-      position:fixed;
-      inset:-50px; /* overscan so edges never show while moving */
-      background-image:url("background_landing.png");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
+.icon:hover{
+    transform:translateY(-3px);
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.08);
+}
 
-      transform:translate3d(0,0,0) scale(1.08);
-      will-change:transform;
-      z-index:-2;
+.icon img{
+    width:28px;
+    height:28px;
 
-      /* darker, more "space black" and less saturated */
-      filter:saturate(0.92) contrast(1.13) brightness(0.70);
-    }
+    filter:invert(1);
+}
 
-    /* overlay haze + gradients for readability + vibe */
-    .bg::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(900px 520px at 70% 15%, rgba(128,92,255,.12), transparent 60%),
-        radial-gradient(800px 640px at 20% 70%, rgba(70,243,255,.07), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));
-      pointer-events:none;
-    }
+.art-frame{
+    width:100%;
+    max-width:1100px;
 
-    /* subtle grain (optional but helps remove "sterile" feel) */
-    .grain{
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-      opacity:.12;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      mix-blend-mode:overlay;
-    }
+    border:1px solid rgba(212,176,106,.3);
+    border-radius:12px;
 
-    .container{
-      max-width:720px;
-      padding:28px;
-      position:relative;
-      z-index:1;
-    }
+    overflow:hidden;
 
-    h1{
-      font-family:Orbitron, sans-serif;
-      font-size:clamp(36px,5vw,60px);
-      letter-spacing:.08em;
-      margin:0 0 12px;
-      text-transform:uppercase;
-      text-shadow: 0 12px 40px rgba(0,0,0,.55);
-    }
+    box-shadow:
+        0 0 40px rgba(212,176,106,.08),
+        0 20px 60px rgba(0,0,0,.5);
+}
 
-    .subtitle{
-      font-size:16px;
-      color:#b9c0ff;
-      line-height:1.6;
-      margin-bottom:26px;
-      text-shadow: 0 10px 30px rgba(0,0,0,.55);
-    }
+.art-frame img{
+    width:100%;
+    display:block;
+}
 
-    .quote{
-      font-size:18px;
-      margin-bottom:30px;
-      line-height:1.55;
-      text-shadow: 0 10px 30px rgba(0,0,0,.55);
-    }
+.lore-video{
+    margin:50px 0;
+    display:flex;
+    justify-content:left;
+}
 
-    .icons{
-      display:flex;
-      gap:18px;
-      justify-content:center;
-      margin-bottom:22px;
-    }
+.lore-video iframe{
+    width:80%;
+    max-width:1000px;
 
-    .icon{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(180,190,255,.18);
-      transition:.2s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      backdrop-filter: blur(6px);
-    }
+    aspect-ratio:16/9;
 
-    .icon:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-2px);
-      border-color: rgba(180,190,255,.32);
-    }
+    border:1px solid rgba(212,176,106,.3);
+    border-radius:12px;
 
-    /* make dark SVG icons visible on dark background */
-    .icon img{
-      width:26px;
-      height:26px;
-      opacity:.92;
-      filter: invert(1) brightness(1.05) contrast(1.05);
-    }
+    box-shadow:
+        0 0 40px rgba(212,176,106,.08),
+        0 20px 60px rgba(0,0,0,.5);
+}
 
-    .lang{
-      position:fixed;
-      top:18px;
-      right:18px;
-      display:flex;
-      gap:6px;
-      font-family:Orbitron, sans-serif;
-      font-size:12px;
-      z-index:2;
-    }
+.lore-section{
+    background:#080808;
+    padding:150px 0;
+    margin-top:10px;
+}
 
-    .lang button{
-      background:rgba(0,0,0,.22);
-      border:1px solid rgba(180,190,255,.25);
-      color:#cfd5ff;
-      padding:6px 10px;
-      border-radius:10px;
-      cursor:pointer;
-      transition:.18s ease;
-      backdrop-filter: blur(6px);
-    }
+.lore-container{
+    width:min(900px,90%);
+    margin:auto;
+}
 
-    .lang button:hover{
-      background:rgba(180,190,255,.08);
-    }
+.lore-container h2{
+    font-family:'Orbitron', sans-serif;
 
-    .lang button.active{
-      background:rgba(180,190,255,.15);
-      color:#fff;
-      border-color: rgba(180,190,255,.35);
-    }
+    font-size:56px;
+    font-weight:800;
 
-    .bottomline{
-      font-size:13px;
-      color:#9aa2da;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      font-family:Orbitron, sans-serif;
-      opacity:.95;
-      margin-top:8px;
-      margin-bottom:6px;
-      text-shadow: 0 10px 30px rgba(0,0,0,.55);
-    }
+    text-transform:uppercase;
+    letter-spacing:0.18em;
 
-    footer{
-      position:fixed;
-      bottom:14px;
-      left:0;
-      width:100%;
-      font-size:12px;
-      color:#8a90c6;
-      text-align:center;
-      padding:0 16px;
-      z-index:2;
-      text-shadow: 0 10px 30px rgba(0,0,0,.55);
-    }
+    color:#d4b06a;
 
-    footer .legal{ opacity:.9; }
+    margin-bottom:50px;
 
-    /* respects accessibility: reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      .bg{ transform:translate3d(0,0,0) scale(1.04) !important; }
-      .icon:hover{ transform:none; }
-    }
-  </style>
+    border-bottom:1px solid rgba(212,176,106,.3);
+    padding-bottom:20px;
+}
+
+.lore-container h3{
+    font-family:'Orbitron', sans-serif;
+
+    font-size:36px;
+    font-weight:500;
+
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+
+    color:#d4b06a;
+
+    margin-bottom:60px;
+
+    border-bottom:1px solid rgba(212,176,106,.3);
+    padding-bottom:15px;
+}
+
+.lore-container h4{
+    font-family:'Orbitron', sans-serif;
+
+    font-size:22px;
+    font-weight:500;
+
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+
+    color:#d4b06a;
+
+    margin-bottom:60px;
+
+    border-bottom:1px solid rgba(212,176,106,.3);
+    padding-bottom:15px;
+}
+
+.lore-container p{
+    color:#d0d0d0;
+    font-size:20px;
+    line-height:1.9;
+    margin-bottom:30px;
+}
+
+
+.background{
+    position:absolute;
+    inset:0;
+
+    background-image:url('assets/artworks/boj_art_detail.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:80%;
+
+    filter:
+        contrast(1.0)
+        saturate(1.0)
+        brightness(1.55);
+
+    will-change:transform;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.55) 0%,
+            rgba(0,0,0,.25) 35%,
+            rgba(0,0,0,.10) 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.45)
+        );
+}
+
+
+.nav{position:absolute;top:25px;left:35px;right:35px;z-index:20;display:flex;justify-content:space-between;align-items:center}
+.logo{width:180px}
+.content{position:relative;z-index:15;height:100%;display:flex;flex-direction:column;justify-content:center;padding-left:17%;max-width:760px}
+.kicker{color:#d4b06a;letter-spacing:6px;font-size:14px;margin-bottom:18px}
+.hero-title{color:#fff;font-weight:900;font-size:clamp(3rem,4.8vw,5rem);line-height:1.02;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,.9)}
+.hero-sub{margin-top:24px;color:#cfcfcf;font-size:1.15rem;max-width:540px;line-height:1.5}
+.button{display:inline-block;text-align:center;margin-top:36px;width:60%;padding:18px 60px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.2);backdrop-filter:blur(6px)}
+.button:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(255,255,255,.4);
+
+    background:rgba(255,255,255,.08);
+}
+.scroll{position:absolute;bottom:30px;left:8%;z-index:15;color:#aaa;letter-spacing:4px;font-size:12px}
+.particle{position:absolute;width:2px;height:2px;background:#ffb35c;border-radius:50%;animation:float linear infinite}
+@keyframes float{from{transform:translateY(110vh)}to{transform:translateY(-120px)}}
+</style>
 </head>
-
 <body>
-  <!-- Background -->
-  <div class="bg" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+<section class='hero'>
 
-  <!-- Language toggle -->
-  <div class="lang">
-    <button id="btnEN" class="active" type="button">EN</button>
-    <button id="btnCZ" type="button">CZ</button>
-  </div>
 
-  <div class="container">
-    <h1 data-i18n="title">CHRONICLES<br>OF THE VOID</h1>
+<div class="social-panel">
 
-    <div class="subtitle" data-i18n="subtitle">
-      A dark sci‑fi collectible card game.
-    </div>
-
-    <div class="quote" data-i18n="quote">
-      When the silence of space finally spoke,<br>
-      it wasn’t an answer.<br><br>
-      <strong>It was an invoice.</strong>
-    </div>
-
-    <div class="icons">
       <!-- Discord -->
       <a class="icon" href="https://discord.gg/tf5NZJpSpP" target="_blank" rel="noopener" aria-label="Discord">
         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg" alt="">
@@ -249,125 +252,386 @@
       <a class="icon" href="https://www.instagram.com/cotv.game" target="_blank" rel="noopener" aria-label="Instagram">
         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="">
       </a>
+    
+</div>
+
+
+
+<div class='background' id='bg'></div>
+<div class='overlay'></div>
+<div class='nav'>
+<img src='assets/artworks/cotv-logo.png' class='logo' alt='COTV'>
+</div>
+<div id='particles'></div>
+<div class='content'>
+<div class='kicker'>CHRONICLES OF THE VOID</div>
+<div class='hero-title'>WHEN THE SILENCE OF UNIVERSE FINALLY SPOKE</div>
+<div class='hero-sub'>A dark sci‑fi collectible card game & universe of sacred machines, forgotten empires and horrors beyond reality.</div>
+<a class="button" href="#" onclick="showDevMessage(); return false;"">ENTER THE VOID</a>
+
+</div>
+<div class='scroll'>SCROLL TO DISCOVER LORE ↓</div>
+</section>
+
+
+<section id="lore" class="lore-section">
+
+<div class="lore-container">
+            <h2 class="lore-subtitle">Epitaph for the Fallen Stars</h2>
+
+            <div class="lore-section">
+                <h3>PROLOGUE</h3>                
+            <p>Long ago, before the sky became a filter and the Sun a commodity, humanity lived under the illusion of stability.
+Disasters came, but they were distant. Wars burned, but always somewhere else. Climatic upheavals, energy crises, and collapsing economies belonged to the next decade, the next generation, someone else’s government. Humanity learned to survive by learning not to see the consequences.
+The twenty-first century did not end in an explosion.
+It ended in comfort.</p>
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Army ART
     </div>
 
-    <div class="bottomline" data-i18n="bottomline">In development — to be continued…</div>
-  </div>
+<div class="art-frame">
+    <img src='assets/artworks/army_sun.png' class='obr1' alt='COTV Army sun art'>
 
-  <footer>
-    <div class="legal">
-      © <span id="year"></span> Chronicles of the Void — All rights reserved
+</div>
+
+</div>
+
+
+
+
+
+
+<p>Though nations remained etched upon maps, their anthems still echoed across stadiums, parliaments convened, and laws continued to be passed—true power had already shifted elsewhere.
+It passed into the hands of those who could command energy, govern the flow of information, and harness the fear of chaos itself.
+Thus emerged the New World Order—silent, contractual, and ruthlessly efficient.
+Corporations did not seize control through violence. They were invited—entrusted with the burden of keeping the world alive.
+And so began the Corporate Age of Earth.</p>
+
+<p>Megacorporations were born of necessity. At first, they emerged as sprawling conglomerates; in time, they evolved into sovereign entities—commanding their own infrastructure, security forces, and legal autonomy.
+Among them, one quickly rose above the rest — <b>Apex Global</b>.
+In its early days, it managed energy grids, orbital logistics, and communication networks. When nation-states faltered in times of crisis, Apex offered solutions—swift, uncompromising, effective. And the world accepted them.
+With every contract, state authority diminished.
+With every exception, governments surrendered another fragment of responsibility.
+Apex did not rule.
+Apex ensured survival.</p>
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        OFFICIAL SHORT
     </div>
-  </footer>
 
-  <script>
-    // ===== i18n =====
-    const TEXT = {
-      en:{
-        title:"CHRONICLES<br>OF THE VOID",
-        subtitle:"A dark sci‑fi collectible card game.",
-        quote:"When the silence of space finally spoke,<br>it wasn’t an answer.<br><br><strong>It was an invoice.</strong>",
-        bottomline:"In development — to be continued…"
-      },
-      cz:{
-        title:"KRONIKY<br>PRÁZDNOTY",
-        subtitle:"Temná sci‑fi sběratelská karetní hra.",
-        quote:"Když se ticho vesmíru konečně ozvalo,<br>nebyla to odpověď.<br><br><strong>Byla to účtenka.</strong>",
-        bottomline:"Ve vývoji — pokračování příště…"
-      }
-    };
+    <iframe
+        id="cotv-apex"
+        src="https://www.youtube.com/embed/74xdyrIf6xU"
+        title="COTV Apex Global"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
 
-    const btnEN = document.getElementById("btnEN");
-    const btnCZ = document.getElementById("btnCZ");
+</div>  
 
-    function setLang(lang){
-      document.documentElement.lang = lang;
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        el.innerHTML = TEXT[lang][el.dataset.i18n];
-      });
-      btnEN.classList.toggle("active", lang==="en");
-      btnCZ.classList.toggle("active", lang==="cz");
-      localStorage.setItem("cotv_lang", lang);
-    }
 
-    btnEN.onclick = ()=>setLang("en");
-    btnCZ.onclick = ()=>setLang("cz");
 
-    // ✅ fixed default language fallback (was broken before)
-    const saved = localStorage.getItem("cotv_lang") || "en";
-    setLang(saved);
+<p>At the same time, in the silence of server halls and research campuses, another power was taking shape.
+<b>Xenotronic</b> did not begin with weapons or armies, but with a promise—optimization, expansion into the cosmos, and the preservation of humanity itself. Neural interfaces, assisted cognition, augmented consciousness. The human mind, stripped of fatigue, emotion, and irrationality, became part of a greater network.
+At first, it was voluntary.
+Then, it became inevitable.
+The world had grown too complex to be governed by human hands alone. Algorithms were faster. More precise. Colder. And that was exactly what was required.
+Yet Earth did not unite.
+It fractured.</p>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+<p>The eastern powers, together with parts of Europe, formed the bloc known as <b>Eurasia‑Kord</b> — pragmatic, industrial, and unforgiving.
+While other regions speculated and optimized, Eurasia built.
+Vast factories. Heavy industry. The mass production of weapons and machines.
+Discipline replaced ideals. Order outweighed freedom. Survival surpassed humanity itself.</p>
 
-    // ===== Parallax background =====
-    const bg = document.querySelector(".bg");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // subtle movement strength (px)
-    const strengthDesktop = 16;
-    const strengthMobile  = 14;
+<div class="lore-video">
 
-    if (!reduceMotion && bg) {
-      let targetX = 0, targetY = 0;
-      let currentX = 0, currentY = 0;
+    <div class="lore-video-title">
+        OFFICIAL TEASER
+    </div>
 
-      // Desktop: mouse
-      function onMouseMove(e){
-        const x = (e.clientX / window.innerWidth) * 2 - 1;  // -1..1
-        const y = (e.clientY / window.innerHeight) * 2 - 1; // -1..1
-        targetX = -x * strengthDesktop;
-        targetY = -y * strengthDesktop;
-      }
-      window.addEventListener("mousemove", onMouseMove, { passive:true });
+<iframe
+    id="cotv-video"
+    src="https://www.youtube.com/embed/Sjzh7EvstuI?enablejsapi=1&mute=0"
+    title="Rise of Eurasia-Kord"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
 
-      // Mobile: device tilt (optional)
-      async function enableTilt(){
-        try{
-          // iOS requires permission on user gesture
-          if (typeof DeviceOrientationEvent !== "undefined" &&
-              typeof DeviceOrientationEvent.requestPermission === "function") {
 
-            // Ask once, on first user click/tap anywhere
-            const ask = async () => {
-              try{
-                const res = await DeviceOrientationEvent.requestPermission();
-                if (res === "granted") {
-                  window.addEventListener("deviceorientation", onTilt, { passive:true });
-                }
-              } catch(_){}
-              window.removeEventListener("click", ask);
-              window.removeEventListener("touchstart", ask);
-            };
-            window.addEventListener("click", ask, { once:true });
-            window.addEventListener("touchstart", ask, { once:true });
+</div>
 
-          } else if (typeof DeviceOrientationEvent !== "undefined") {
-            // Android/others: usually no permission prompt
-            window.addEventListener("deviceorientation", onTilt, { passive:true });
-          }
-        }catch(_){}
-      }
 
-      function onTilt(e){
-        // gamma: left/right (-90..90), beta: front/back (-180..180)
-        const g = Math.max(-25, Math.min(25, e.gamma || 0)) / 25; // -1..1
-        const b = Math.max(-25, Math.min(25, e.beta  || 0)) / 25; // -1..1
-        targetX = -g * strengthMobile;
-        targetY = -b * strengthMobile;
-      }
 
-      enableTilt();
 
-      function animate(){
-        // smooth follow (lerp)
-        currentX += (targetX - currentX) * 0.06;
-        currentY += (targetY - currentY) * 0.06;
+<p>On the fringes of this emergent world—within mountains, ruins, forgotten regions, and autonomous zones where corporations deemed investment unprofitable—something else began to take root.
+Communities bound not by contracts, but by blood. By memory. By honor.
+<b>The Clans</b> rejected both digital governance and corporate arbitration. They were slow, archaic, and inefficient. Yet in an age where the world was dissolving into systems and nodes, they preserved the one thing no algorithm could ever truly replicate:
+The will to die for a promise.</p>
 
-        bg.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) scale(1.08)`;
-        requestAnimationFrame(animate);
-      }
-      animate();
-    }
-  </script>
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Clans ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/clans.png' class='obr1' alt='COTV Clans art'>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<p>Orbital cities rose around the planet, alongside industrial complexes processing regolith on the Moon and extraction stations scattered across the asteroid belt. Mars became an operational zone, not a home.
+Apex Global controlled transport and supply chains.
+Eurasia‑Kord constructed vast defensive infrastructures.
+Xenotronic interlinked the minds of colonists with the network, suppressing panic and preempting revolt.
+Humanity was no longer whole.
+It had become a fragment of the system—
+a node,
+a stream of data within an endless machine of expansion.</p>
+
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Xenotronic origin
+    </div>
+
+    <iframe
+        id="cotv-xeno"
+        src="https://www.youtube.com/embed/lJ7TUVNha6s"
+        title="COTV Xenotronic origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+
+</div>  
+
+
+
+
+<p>In the Asia‑Pacific sphere, a singular response emerged against this soulless world.
+<b>Ronin‑Tech</b> fused archaic codes of honor with the most advanced cybernetics. Neither state nor corporation, but a path—the way of the warrior, bushido. Identity defined not by contract, but by choice.
+Steel and code. Tradition and neon.
+Ronin‑Tech did not seek to save the world.
+It sought only to retain control over what humanity would become.</p>
+
+
+
+
+<div class="obr">
+
+    <div class="lore-video-title">
+        Ronin-Tech ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/ronin.png' class='obr1' alt='COTV Ronin-Tech art'>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<p>A golden age had arrived. Humanity possessed energy, technology, immortality within digital archives, and mastery over both genetics and space.
+And yet, the universe remained silent.
+Unresponsive.
+Without answer.</p><br>
+
+<p>The silence began to provoke.</p><br><br><br>
+
+<p>The longing for meaning—for proof that we were not alone—soon reached its culmination…</p>
+            </div>
+            <div class="lore-section">
+                <h3>I. The Sin of Immaculate Progress</h3>
+                <p>In an age when the Sun still warmed human faces unfiltered by biospheric shields, humanity declared itself the architect of reality.
+And when Earth proved no longer sufficient, it did not return to humility.
+It fled toward the stars.</p>
+                <p>Apex Global raised palaces of gold upon the moons of Saturn, while Xenotronic wove the human mind into the eternal silence of silicon.
+It was an era of absolute pride.
+We believed the universe to be nothing more than raw material—awaiting the rise of our cults of progress.</p>
+                <p>Then came the project known as “Deep Spear.”
+At the outermost edge of our galaxy—where the laws of physics begin to fracture against the infinite void—we pierced the veil. Probes struck against the very boundary of existence itself, encountering what came to be known as the <b>Outer Void</b> — an immaterial consciousness older than humanity, older than light itself.
+But we did not enter a new world.
+We opened the maw of nothingness—endless, unknowable—
+and it began, unseen, to consume and tear at our reality, shredding the very illusion of its inviolability into fragments.</p>
+
+
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Void rift ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/void.png' class='obr1' alt='COTV Void rift art'>
+
+</div>
+
+</div>
+
+
+
+            </div>
+
+            <div class="lore-section">
+                <h3>II. The Anatomy of Decay</h3>
+                <p>Yet it was a far more insidious malignancy.
+The Outer Void did not spread like an army, but like a cancer of perception itself. The first signs of infection were subtle—dreams of rotting worlds, machines that began to whisper prayers into the dark, and blood within human laborers turning black as asphalt.
+Then came the first heretics.
+Sages became vectors of contagion. In the ruins of shattered cathedrals, they began to summon the things of nightmares—
+and the world, slowly, began to answer.</p>
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Void ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/art_war_cotv.png' class='obr1' alt='COTV Void art'>
+
+</div>
+
+</div>
+
+
+                <p>And so it was brought into being—summoned into existence—
+the abomination known as the Goliath of Rot.
+These were no mere monsters. They were mountains of flesh, stitched together from ten thousand fallen soldiers, driven by grinding gears that crushed bone in an endless cycle of suffering.
+Then came the Rotting Collector—moving across the battlefield like a shadow. It did not harvest weapons, but souls, impaling them upon rusted hooks, preserving them like offerings. Fuel for the widening rupture of the Void—
+a rift without origin, without end.</p>
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Void ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/fight.png' class='obr1' alt='COTV Fight Void art'>
+
+</div>
+
+</div>
+
+            </div>
+
+            <div class="lore-section">
+                <h3>III. The Galaxy in Chains</h3>
+                <p>Rather than unite in the final hour, humanity tore itself apart.</p>
+                <p>The surviving zealots of the old faith—who came to call themselves the <b>Lightbearers</b> — unearthed ancient relics from their crypts and, guided by forgotten prophecies, unleashed an all-consuming “holy” Inquisition.
+In divine fire, they burned the infected and the innocent alike.</p>
+
+
+
+
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Lightbearers ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/light.png' class='obr1' alt='COTV Lightbearers art'>
+
+</div>
+
+</div>
+
+
+
+
+
+
+                <p>Eurasia‑Kord transformed its industrial worlds into vast foundries of death, where steel and discipline became the new divinity.
+The Clans, gripped by a brutal nostalgia, returned to their codes of honor and the raw violence of the blade.
+And Ronin‑Tech watches this danse macabre through the neon filters of its cybernetic vision—waiting, patiently, for the moment to tear its share of power from the rotting carcass of civilization.</p>
+            </div>
+
+            <div class="lore-section">
+                <h3>IV. The Currency of Fate</h3>
+                <p>In this new world, neither credits nor gold hold value as they once did.
+The only true currency is the metaphysical <strong>Energy</strong> that the Void pumps into reality through its agents.
+Every victory is paid for in blood.
+<strong>Victory points</strong> are not mere figures on a ledger;
+they are marks of survival in a galaxy that has chosen to die.</p>
+                <p>And thus, the Chronicles of the Void began.</p>
+<p>Starships now burn the bones of the fallen as fuel,
+and in the deep dungeons at the edge of the world, a single question echoes: <em>"Will you be the one who sacrifices—
+or the one who is sacrificed?"</em></p>
+
+<div class="lore-video">
+
+    <div class="lore-video-title">
+        Starships ART
+    </div>
+
+<div class="art-frame">
+    <img src='assets/artworks/starships.png' class='obr1' alt='COTV Starships art'>
+
+</div>
+
+</div>
+
+            </div>
+
+            <div class="lore-footer">
+                <h4>Eternal pilgrim, welcome to the universe of COTV—the Chronicles of the Void.<br>
+Here, hope is a sin… one punished by eternal oblivion.</h4>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+const bg=document.getElementById('bg');
+document.addEventListener('mousemove',e=>{const x=(e.clientX/window.innerWidth-.5)*13;const y=(e.clientY/window.innerHeight-.5)*13;bg.style.transform=`translate(${x}px,${y}px) scale(1.1)`});
+const c=document.getElementById('particles');
+for(let i=0;i<50;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.opacity=Math.random();p.style.animationDuration=(10+Math.random()*15)+'s';c.appendChild(p)}
+</script>
+
+<script>
+function showDevMessage() {
+    alert(
+        "CHRONICLES OF THE VOID\n\n" +
+        "Development is currently in progress.\n\n" +
+        "Please be patient and discover the Lore below.\n\n" +
+        "See you among the stars."
+    );
+}
+</script>
+<footer class="footer">
+    © 2026 chroniclesofthevoid.net — All rights reserved
+</footer>
 </body>
 </html>
