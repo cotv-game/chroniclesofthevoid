@@ -1,5 +1,4 @@
 # Chronicles of the Void
 
-Dark sci-fi CCG game - project in development
-
-This repository hosts the project landing page
+A dark sci‑fi collectible card game & universe of sacred machines, forgotten empires and horrors beyond reality.
+COTV CCG
