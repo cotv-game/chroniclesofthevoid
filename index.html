@@ -214,20 +214,21 @@ html,body{
     will-change:transform;
 }
 
-@media screen and (max-width:768px){
+@media (max-width:768px){
     .background{
-        background-position:center top !important;
+        inset:0 0 auto 0;
+        height:420px;
         background-size:cover !important;
-    }
-    .content{
-        padding-left:8%;
-        padding-right:8%;
-        padding-top:80px;
+        background-position:top center !important;
     }
 
-    .hero-title{
-        font-size:clamp(2.4rem,10vw,4rem);
+    .content{
+        justify-content:flex-start;
+        padding-top:170px;
+        padding-left:8%;
+        max-width:90%;
     }
+
 }
 
 </style>
