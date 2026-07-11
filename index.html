@@ -221,6 +221,16 @@ html,body{
 
 @media (max-width:768px){
 
+    .hero{
+        height:auto;
+        min-height:100vh;
+    }
+
+    .background{
+        background-size:100% auto !important;
+        background-position:top center !important;
+    }
+
     .logo{
         width:70px;
     }
@@ -261,10 +271,6 @@ html,body{
         max-width:280px;
     }
 
-    .background{
-        background-size:300px !important;
-        background-position:center top !important;
-    }
 }
 
 
@@ -625,7 +631,7 @@ if(window.innerWidth > 768){
         bg.style.transform=`translate(${x}px,${y}px) scale(1.1)`;
     });
 }else{
-    bg.style.transform='translateY(-250px) scale(1.6)';
+    bg.style.transform='none';
 }
 
 const c=document.getElementById('particles');
