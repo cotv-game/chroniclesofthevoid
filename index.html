@@ -218,7 +218,7 @@ html,body{
     .background{
         inset:0 0 auto 0;
         height:420px;
-        background-size:cover !important;
+        background-size:180% !important;
         background-position:top center !important;
     }
 
@@ -230,6 +230,7 @@ html,body{
     }
 
 }
+
 
 </style>
 </head>
@@ -580,9 +581,26 @@ Here, hope is a sin… one punished by eternal oblivion.</h4>
 
 <script>
 const bg=document.getElementById('bg');
-document.addEventListener('mousemove',e=>{const x=(e.clientX/window.innerWidth-.5)*13;const y=(e.clientY/window.innerHeight-.5)*13;bg.style.transform=`translate(${x}px,${y}px) scale(1.1)`});
+
+if(window.innerWidth > 768){
+    document.addEventListener('mousemove',e=>{
+        const x=(e.clientX/window.innerWidth-.5)*13;
+        const y=(e.clientY/window.innerHeight-.5)*13;
+        bg.style.transform=`translate(${x}px,${y}px) scale(1.1)`;
+    });
+}else{
+    bg.style.transform='translateY(-180px) scale(1.6)';
+}
+
 const c=document.getElementById('particles');
-for(let i=0;i<50;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.opacity=Math.random();p.style.animationDuration=(10+Math.random()*15)+'s';c.appendChild(p)}
+for(let i=0;i<50;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'%';
+    p.style.opacity=Math.random();
+    p.style.animationDuration=(10+Math.random()*15)+'s';
+    c.appendChild(p);
+}
 </script>
 
 <script>
