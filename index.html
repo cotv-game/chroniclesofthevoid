@@ -214,14 +214,21 @@ html,body{
     will-change:transform;
 }
 
-/* MOBIL */
-@media (max-width:768px){
+@media screen and (max-width:768px){
+
     .background{
-        background-position:50% 0%;
-        background-size:150%;
+        background-position:50% 10% !important;
+        background-size:220% !important;
     }
-    .hero-content{
-        margin-top:60px;
+
+    .content{
+        padding-left:8%;
+        padding-right:8%;
+        padding-top:80px;
+    }
+
+    .hero-title{
+        font-size:clamp(2.4rem,10vw,4rem);
     }
 
 }
