@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chroniclesofthevoid.net">
+<meta property="og:title" content="COTV: CHRONICLES OF THE VOID - WHEN THE SILENCE OF SPACE FINALLY SPOKE">
+<meta property="og:description" content="A dark sci-fi collectible card game & universe of sacred machines, forgotten empires and horrors beyond reality.">
+<meta property="og:image" content="https://chroniclesofthevoid.net/og_image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://chroniclesofthevoid.net">
+<meta name="twitter:title" content="COTV: CHRONICLES OF THE VOID - WHEN THE SILENCE OF SPACE FINALLY SPOKE">
+<meta name="twitter:description" content="A dark sci-fi collectible card game & universe of sacred machines, forgotten empires and horrors beyond reality.">
+<meta name="twitter:image" content="https://chroniclesofthevoid.net/og_image.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
-<title>Chronicles of the Void</title>
+<title>Chronicles of the Void COTV CCG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
-fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{
@@ -70,19 +80,15 @@ html,body{
 .icon img{
     width:28px;
     height:28px;
-
     filter:invert(1);
 }
 
 .art-frame{
     width:100%;
     max-width:1100px;
-
     border:1px solid rgba(212,176,106,.3);
     border-radius:12px;
-
     overflow:hidden;
-
     box-shadow:
         0 0 40px rgba(212,176,106,.08),
         0 20px 60px rgba(0,0,0,.5);
@@ -102,12 +108,9 @@ html,body{
 .lore-video iframe{
     width:80%;
     max-width:1000px;
-
     aspect-ratio:16/9;
-
     border:1px solid rgba(212,176,106,.3);
     border-radius:12px;
-
     box-shadow:
         0 0 40px rgba(212,176,106,.08),
         0 20px 60px rgba(0,0,0,.5);
@@ -126,51 +129,36 @@ html,body{
 
 .lore-container h2{
     font-family:'Orbitron', sans-serif;
-
     font-size:56px;
     font-weight:800;
-
     text-transform:uppercase;
     letter-spacing:0.18em;
-
     color:#d4b06a;
-
     margin-bottom:50px;
-
     border-bottom:1px solid rgba(212,176,106,.3);
     padding-bottom:20px;
 }
 
 .lore-container h3{
     font-family:'Orbitron', sans-serif;
-
     font-size:36px;
     font-weight:500;
-
     text-transform:uppercase;
     letter-spacing:0.18em;
-
     color:#d4b06a;
-
     margin-bottom:60px;
-
     border-bottom:1px solid rgba(212,176,106,.3);
     padding-bottom:15px;
 }
 
 .lore-container h4{
     font-family:'Orbitron', sans-serif;
-
     font-size:22px;
     font-weight:500;
-
     text-transform:uppercase;
     letter-spacing:0.18em;
-
     color:#d4b06a;
-
     margin-bottom:60px;
-
     border-bottom:1px solid rgba(212,176,106,.3);
     padding-bottom:15px;
 }
@@ -180,24 +168,6 @@ html,body{
     font-size:20px;
     line-height:1.9;
     margin-bottom:30px;
-}
-
-
-.background{
-    position:absolute;
-    inset:0;
-
-    background-image:url('assets/artworks/boj_art_detail.png');
-    background-position:center;
-    background-repeat:no-repeat;
-    background-size:80%;
-
-    filter:
-        contrast(1.0)
-        saturate(1.0)
-        brightness(1.55);
-
-    will-change:transform;
 }
 
 .overlay{
@@ -217,29 +187,50 @@ html,body{
         );
 }
 
-
 .nav{position:absolute;top:25px;left:35px;right:35px;z-index:20;display:flex;justify-content:space-between;align-items:center}
 .logo{width:180px}
 .content{position:relative;z-index:15;height:100%;display:flex;flex-direction:column;justify-content:center;padding-left:17%;max-width:760px}
 .kicker{color:#d4b06a;letter-spacing:6px;font-size:14px;margin-bottom:18px}
-.hero-title{color:#fff;font-weight:900;font-size:clamp(3rem,4.8vw,5rem);line-height:1.02;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,.9)}
+.hero-title{color:#fff;font-weight:900;font-size:clamp(3rem,4.8vw,5rem);line-height:1.02;text-transform:uppercase;text-shadow:0 4px 8px rgba(0,0,0,.95),0 15px 40px rgba(0,0,0,.75),0 0 18px rgba(255,140,0,.35)}
 .hero-sub{margin-top:24px;color:#cfcfcf;font-size:1.15rem;max-width:540px;line-height:1.5}
 .button{display:inline-block;text-align:center;margin-top:36px;width:60%;padding:18px 60px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.2);backdrop-filter:blur(6px)}
 .button:hover{
     transform:translateY(-3px);
-
     border-color:rgba(255,255,255,.4);
-
     background:rgba(255,255,255,.08);
 }
 .scroll{position:absolute;bottom:30px;left:8%;z-index:15;color:#aaa;letter-spacing:4px;font-size:12px}
 .particle{position:absolute;width:2px;height:2px;background:#ffb35c;border-radius:50%;animation:float linear infinite}
 @keyframes float{from{transform:translateY(110vh)}to{transform:translateY(-120px)}}
+
+.background{
+    position:absolute;
+    inset:0;
+    background-image:url('assets/artworks/boj_art_detail.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:80%;
+    filter:contrast(1.0) saturate(1.0) brightness(1.55);
+    will-change:transform;
+}
+
+/* MOBIL */
+@media (max-width:768px){
+    .background{
+        background-position:50% 0%;
+        background-size:150%;
+    }
+    .hero-content{
+        margin-top:60px;
+    }
+
+}
+
 </style>
 </head>
+
 <body>
 <section class='hero'>
-
 
 <div class="social-panel">
 
@@ -254,8 +245,6 @@ html,body{
       </a>
     
 </div>
-
-
 
 <div class='background' id='bg'></div>
 <div class='overlay'></div>
@@ -273,7 +262,6 @@ html,body{
 <div class='scroll'>SCROLL TO DISCOVER LORE ↓</div>
 </section>
 
-
 <section id="lore" class="lore-section">
 
 <div class="lore-container">
@@ -285,7 +273,6 @@ html,body{
 Disasters came, but they were distant. Wars burned, but always somewhere else. Climatic upheavals, energy crises, and collapsing economies belonged to the next decade, the next generation, someone else’s government. Humanity learned to survive by learning not to see the consequences.
 The twenty-first century did not end in an explosion.
 It ended in comfort.</p>
-
 
 <div class="lore-video">
 
@@ -299,11 +286,6 @@ It ended in comfort.</p>
 </div>
 
 </div>
-
-
-
-
-
 
 <p>Though nations remained etched upon maps, their anthems still echoed across stadiums, parliaments convened, and laws continued to be passed—true power had already shifted elsewhere.
 It passed into the hands of those who could command energy, govern the flow of information, and harness the fear of chaos itself.
@@ -351,7 +333,6 @@ While other regions speculated and optimized, Eurasia built.
 Vast factories. Heavy industry. The mass production of weapons and machines.
 Discipline replaced ideals. Order outweighed freedom. Survival surpassed humanity itself.</p>
 
-
 <div class="lore-video">
 
     <div class="lore-video-title">
@@ -370,13 +351,10 @@ Discipline replaced ideals. Order outweighed freedom. Survival surpassed humanit
 </div>
 
 
-
-
 <p>On the fringes of this emergent world—within mountains, ruins, forgotten regions, and autonomous zones where corporations deemed investment unprofitable—something else began to take root.
 Communities bound not by contracts, but by blood. By memory. By honor.
 <b>The Clans</b> rejected both digital governance and corporate arbitration. They were slow, archaic, and inefficient. Yet in an age where the world was dissolving into systems and nodes, they preserved the one thing no algorithm could ever truly replicate:
 The will to die for a promise.</p>
-
 
 
 <div class="lore-video">
@@ -391,10 +369,6 @@ The will to die for a promise.</p>
 </div>
 
 </div>
-
-
-
-
 
 
 <p>Orbital cities rose around the planet, alongside industrial complexes processing regolith on the Moon and extraction stations scattered across the asteroid belt. Mars became an operational zone, not a home.
@@ -425,15 +399,11 @@ a stream of data within an endless machine of expansion.</p>
 </div>  
 
 
-
-
 <p>In the Asia‑Pacific sphere, a singular response emerged against this soulless world.
 <b>Ronin‑Tech</b> fused archaic codes of honor with the most advanced cybernetics. Neither state nor corporation, but a path—the way of the warrior, bushido. Identity defined not by contract, but by choice.
 Steel and code. Tradition and neon.
 Ronin‑Tech did not seek to save the world.
 It sought only to retain control over what humanity would become.</p>
-
-
 
 
 <div class="obr">
@@ -448,11 +418,6 @@ It sought only to retain control over what humanity would become.</p>
 </div>
 
 </div>
-
-
-
-
-
 
 
 <p>A golden age had arrived. Humanity possessed energy, technology, immortality within digital archives, and mastery over both genetics and space.
@@ -477,7 +442,6 @@ At the outermost edge of our galaxy—where the laws of physics begin to fractur
 But we did not enter a new world.
 We opened the maw of nothingness—endless, unknowable—
 and it began, unseen, to consume and tear at our reality, shredding the very illusion of its inviolability into fragments.</p>
-
 
 
 
@@ -550,8 +514,6 @@ In divine fire, they burned the infected and the innocent alike.</p>
 
 
 
-
-
 <div class="lore-video">
 
     <div class="lore-video-title">
@@ -564,8 +526,6 @@ In divine fire, they burned the infected and the innocent alike.</p>
 </div>
 
 </div>
-
-
 
 
 
