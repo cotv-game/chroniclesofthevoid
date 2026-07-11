@@ -226,9 +226,14 @@ html,body{
         letter-spacing:3px;
         margin-top:15px;
     }
+    
     .hero{
-        height:auto;
-        min-height:100vh;
+        mask-image: linear-gradient(
+            to bottom,
+            black 0%,
+            black 65%,
+            transparent 100%
+        );
     }
 
     .background{
@@ -272,17 +277,6 @@ html,body{
         max-width:260px;
         text-transform:uppercase;
         text-shadow:0 4px 8px rgba(0,0,0,.95),0 15px 40px rgba(0,0,0,.75),0 0 18px rgba(255,140,0,.35);
-    }
-
-    .overlay{
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(0,0,0,0) 45%,
-                rgba(0,0,0,.25) 55%,
-                rgba(0,0,0,.65) 70%,
-                rgba(0,0,0,.95) 100%
-            );
     }
     
     .hero-sub{
