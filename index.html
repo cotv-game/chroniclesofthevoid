@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta name="msvalidate.01" content="086F55343DAC4629947FD407A6B225EF" />    
-<meta name="description" content="Chronicles of the Void (COTV) is a dark sci-fi collectible card game universe of sacred machines, forgotten empires, cosmic horrors and galactic war.">
-<meta name="keywords" content="COTV, Chronicles of the Void, sci-fi card game, collectible card game, CCG, dark sci-fi, space strategy, indie game, lore, space horror, cyberpunk, dystopian universe">
-<meta name="author" content="Chronicles of the Void">
+<meta name="description" content="Chronicles of the Void (COTV) is a dark sci-fi universe of sacred machines, forgotten empires, cosmic horror and galactic war. Discover Book of the Void: Archive.">
+<meta name="keywords" content="COTV, Chronicles of the Void, Book of the Void, Book of the Void Archive, Kniha Prázdnoty, sci-fi card game, collectible card game, CCG, dark sci-fi, space strategy, indie game, lore, space horror, cyberpunk, dystopian universe">
+<meta name="author" content="Pavel Boháč | Chronicles of the Void">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://chroniclesofthevoid.net/">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://chroniclesofthevoid.net/og_image.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chronicles of the Void (COTV CCG) | Dark Sci‑Fi Collectible Card Game</title>
+<title>Chronicles of the Void | Dark Sci-Fi CCG & Book of the Void</title>
 <link rel="icon" type="image/png" href="assets/artworks/cotv-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -413,6 +413,38 @@ html,body{
 }
 
 
+
+
+/* === COTV: social floating effect + Book of the Void portal === */
+.social-panel .icon{animation:socialFloat 4.6s ease-in-out infinite}
+.social-panel .icon:nth-child(2){animation-delay:.35s}.social-panel .icon:nth-child(3){animation-delay:.7s}
+@keyframes socialFloat{0%,100%{translate:0 0}50%{translate:0 -6px}}
+
+.void-book-link{position:absolute;z-index:18;top:52%;right:4.5%;width:clamp(230px,19vw,340px);aspect-ratio:1.45/1;text-decoration:none;color:#e9d7ad;perspective:1300px;opacity:0;transform:translate(125vw,-50%) rotate(13deg) scale(.58);animation:bookArrival 3.5s cubic-bezier(.2,.78,.2,1) .55s forwards;filter:drop-shadow(0 22px 25px rgba(0,0,0,.85))}
+.void-book-link:focus-visible{outline:2px solid #d4b06a;outline-offset:9px}
+.void-book-link::after{content:"ENTER THE ARCHIVE";position:absolute;left:50%;bottom:-28px;translate:-50% 8px;color:rgba(238,215,174,.9);font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:.22em;white-space:nowrap;opacity:0;transition:.35s}
+.void-book-link:hover::after,.void-book-link:focus-visible::after{opacity:1;translate:-50% 0}
+.void-book-float{position:absolute;inset:0;transform-style:preserve-3d;animation:bookFloat 5s ease-in-out 4.05s infinite;transition:transform .45s ease,filter .45s ease}
+.void-book-link:hover .void-book-float,.void-book-link:focus-visible .void-book-float{transform:scale(1.13) translateY(-4px);filter:drop-shadow(0 0 19px rgba(205,98,38,.48))}
+@keyframes bookArrival{0%{opacity:0;transform:translate(125vw,-43%) rotate(15deg) scale(.58)}62%{opacity:1}84%{opacity:1;transform:translate(-1.5vw,-52%) rotate(-2deg) scale(1.03)}100%{opacity:1;transform:translate(0,-50%) rotate(0) scale(1)}}
+@keyframes bookFloat{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -10px;rotate:-.7deg}}
+.void-book-pages{position:absolute;inset:8% 1% 7%;display:grid;grid-template-columns:1fr 1fr;border:2px solid rgba(64,34,17,.95);border-radius:7px 13px 13px 7px;overflow:hidden;background:#b79b6b;box-shadow:inset 0 0 34px rgba(38,18,7,.78),10px 14px 25px rgba(0,0,0,.72)}
+.void-book-page{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10%;text-align:center;background:linear-gradient(90deg,rgba(52,27,12,.32),transparent 18%,transparent 82%,rgba(52,27,12,.2)),repeating-linear-gradient(0deg,rgba(68,38,18,.055) 0,rgba(68,38,18,.055) 1px,transparent 1px,transparent 5px),#c5ad7e}
+.void-book-page:first-child{border-right:1px solid rgba(67,35,16,.55)}
+.void-book-page:first-child::before{content:"A NEW DARK\A SCI-FI NOVELLA";white-space:pre;color:rgba(74,34,16,.68);font:clamp(10px,.78vw,14px)/1.45 Georgia,serif;letter-spacing:.16em}
+.void-book-sigil{width:clamp(33px,3vw,52px);height:clamp(33px,3vw,52px);margin-bottom:9%;border:1px solid rgba(94,42,18,.65);border-radius:50%;display:grid;place-items:center;color:#5c2914;font:700 clamp(18px,1.7vw,28px)/1 Georgia,serif;box-shadow:inset 0 0 10px rgba(83,35,13,.25)}
+.void-book-title{color:#281208;font:700 clamp(11px,1vw,17px)/1.08 Georgia,serif;letter-spacing:.075em;text-shadow:0 1px rgba(255,235,190,.28);transition:.4s}
+.void-book-rule{width:68%;height:1px;margin:8% 0;background:rgba(78,35,15,.58)}
+.void-book-note{color:#4a2110;font:700 clamp(7px,.57vw,10px)/1.45 Georgia,serif;letter-spacing:.095em;transition:.4s}
+.void-book-link:hover .void-book-title,.void-book-link:hover .void-book-note,.void-book-link:focus-visible .void-book-title,.void-book-link:focus-visible .void-book-note{transform:scale(1.1);color:#160904}
+.void-book-cover{position:absolute;z-index:3;inset:5% 0 4%;display:grid;place-items:center;transform-origin:left center;border:2px solid rgba(155,95,44,.72);border-radius:5px 13px 13px 5px;background:radial-gradient(circle at center,rgba(144,55,22,.38),transparent 52%),linear-gradient(135deg,#32170f,#110806 50%,#35170d);box-shadow:inset 0 0 0 7px #160b08,inset 0 0 0 9px rgba(167,101,45,.38),inset 0 0 36px #000;animation:bookCoverOpen 1.75s cubic-bezier(.35,.05,.18,1) 2.65s forwards;backface-visibility:hidden}
+.void-book-cover::before{content:"BOOK OF THE VOID";width:66%;padding:16% 6%;border:1px solid rgba(202,131,62,.48);color:rgba(220,153,78,.78);text-align:center;font:clamp(11px,1vw,16px) Georgia,serif;letter-spacing:.14em;text-shadow:0 0 14px rgba(202,68,20,.72)}
+@keyframes bookCoverOpen{from{transform:rotateY(0)}to{transform:rotateY(-158deg)}}
+@media(max-width:1100px){.void-book-link{right:3%;top:61%;width:clamp(205px,25vw,285px)}}
+@media(max-width:768px){.void-book-link{top:auto;right:5%;bottom:8%;width:clamp(160px,43vw,225px);transform:translateX(125vw) rotate(12deg) scale(.62)}@keyframes bookArrival{0%{opacity:0;transform:translateX(125vw) rotate(14deg) scale(.62)}84%{opacity:1;transform:translateX(-2vw) rotate(-2deg) scale(1.03)}100%{opacity:1;transform:translateX(0) rotate(0) scale(1)}}.void-book-link::after{display:none}}
+@media(max-width:520px){.void-book-link{right:4%;bottom:5%;width:155px}}
+@media(prefers-reduced-motion:reduce){.social-panel .icon,.void-book-link,.void-book-float,.void-book-cover{animation:none!important}.void-book-link{opacity:1;transform:translate(0,-50%)}.void-book-cover{transform:rotateY(-158deg)}}
+
 </style>
 </head>
 
@@ -421,17 +453,39 @@ html,body{
 
 <div class="social-panel">
 
+      <!-- Facebook: replace # with the final Facebook URL -->
+      <a class="icon" href="https://www.facebook.com/groups/1792185985616192/" target="_blank" rel="noopener" aria-label="Kniha Prázdnoty: Archiv" title="Kniha Prázdnoty: Archiv - Facebook skupina">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/facebook.svg" alt="Facebook skupina Kniha Prázdnoty: Archiv">
+      </a>
+
       <!-- Discord -->
-      <a class="icon" href="https://discord.gg/tf5NZJpSpP" target="_blank" rel="noopener" aria-label="Discord">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg" alt="">
+      <a class="icon" href="https://discord.gg/tf5NZJpSpP" target="_blank" rel="noopener" aria-label="Discord" title="Discord server Chronicles of the Void">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg" alt="Discord server Chronicles of the Void">
       </a>
 
       <!-- Instagram -->
-      <a class="icon" href="https://www.instagram.com/cotv.game" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="">
+      <a class="icon" href="https://www.instagram.com/cotv.game" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram profile Chronicles of the Void">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram profile Chronicles of the Void">
       </a>
     
 </div>
+
+<!-- Floating Book of the Void archive link -->
+<a class="void-book-link" href="archive/knihaprazdnoty_archiv.html" aria-label="Open Book of the Void: Archive, now available in Czech">
+  <span class="void-book-float" aria-hidden="true">
+    <span class="void-book-pages">
+      <span class="void-book-page"></span>
+      <span class="void-book-page">
+        <span class="void-book-sigil">✥</span>
+        <span class="void-book-title">BOOK OF<br>THE VOID: ARCHIVE</span>
+        <span class="void-book-rule"></span>
+        <span class="void-book-note">AVAILABLE<br>IN CZECH NOW</span>
+      </span>
+    </span>
+    <span class="void-book-cover"></span>
+  </span>
+</a>
+
 <h1 class="seo-hidden">
     Chronicles of the Void – Sci‑Fi Card Game Universe, Lore Archive and Research Documents
 </h1>
@@ -445,7 +499,7 @@ html,body{
 <div class='kicker'>CHRONICLES OF THE VOID</div>
 <div class='hero-title'>WHEN THE SILENCE OF SPACE FINALLY SPOKE</div>
 <div class='hero-sub'>A dark sci‑fi collectible card game & universe of sacred machines, forgotten empires and horrors beyond reality.</div>
-<a class="button" href="#" onclick="showDevMessage(); return false;"">ENTER THE VOID</a>
+<a class="button" href="#" onclick="showDevMessage(); return false;">ENTER THE VOID</a>
 
 </div>
 <div class='scroll'>SCROLL TO DISCOVER THE LORE ↓</div>
@@ -761,10 +815,7 @@ for(let i=0;i<50;i++){
 <script>
 function showDevMessage() {
     alert(
-        "CHRONICLES OF THE VOID\n\n" +
-        "Development is currently in progress.\n\n" +
-        "Please be patient and discover the Lore below.\n\n" +
-        "See you among the stars."
+"Welcome, eternal pilgrim, to the official home of Chronicles of the Void — a new dark sci-fi collectible card game.\n" + "The game is currently in development, but do not despair. If you speak Czech, the dark sci-fi novella Book of the Void: Archive (Kniha Prázdnoty: Archiv) is now emerging from the darkness, revealing far more of the COTV universe than the fragments presented in our Lore.\n\n" + "And if you wish to begin your journey now, scroll down. The Lore of Chronicles of the Void awaits below.\n\n" + "See you among the stars."
     );
 }
 </script>
